@@ -1,0 +1,13 @@
+name: senet
+channels:
+- pytorch 
+- conda-forge
+- anaconda
+dependencies:
+- python=3.7
+- numpy
+- pytorch
+- cudatoolkit=9.0
+- torchvision
+- pip:
+    - git+https://github.com/moskomule/homura
