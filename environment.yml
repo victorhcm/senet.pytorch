@@ -11,3 +11,4 @@ dependencies:
 - torchvision
 - pip:
     - git+https://github.com/moskomule/homura
+    - git+https://github.com/moskomule/miniargs.git

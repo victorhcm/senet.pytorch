@@ -1,20 +1,21 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH --qos=high
-#SBATCH -c 4
-#SBATCH --gres=gpu:1
-#rmSBATCH --nodelist=viper05
+#SBATCH -c 6
+#SBATCH --gres=gpu:2
+#SBATCH --nodelist=viper06
 
 
 # DIRECTORIES
 export PROJECTDIR="/home/victorhcmelo/slurm/senet.pytorch"
 
 cd $PROJECTDIR
-#conda env update 
+# conda env update 
 source activate senet
 
 export PYTHONPATH="$PYTHONPATH:$PROJECTDIR"
 # srun python -m cifar.main
 # srun python -m cifar.main_pls
 
-srun python cifar.py 
+# srun python cifar.py --reduction 4
+srun python imagenet.py /ssd/victorhcmelo/imagenet/ILSVRC/Data/CLS-LOC --reduction 4 --batch_size 150
