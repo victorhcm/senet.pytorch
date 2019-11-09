@@ -10,5 +10,5 @@ dependencies:
 - cudatoolkit=9.0
 - torchvision
 - pip:
-    - git+https://github.com/moskomule/homura
+    - git+https://github.com/moskomule/homura@v0.6
     - git+https://github.com/moskomule/miniargs.git
