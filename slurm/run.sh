@@ -10,7 +10,7 @@
 export PROJECTDIR="/home/victorhcmelo/slurm/senet.pytorch"
 
 cd $PROJECTDIR
-# conda env update 
+conda env update 
 source activate senet
 
 export PYTHONPATH="$PYTHONPATH:$PROJECTDIR"
@@ -18,4 +18,4 @@ export PYTHONPATH="$PYTHONPATH:$PROJECTDIR"
 # srun python -m cifar.main_pls
 
 # srun python cifar.py --reduction 4
-srun python imagenet.py /ssd/victorhcmelo/imagenet/ILSVRC/Data/CLS-LOC --reduction 4 --batch_size 150
+srun python imagenet.py /local/victorhcmelo/imagenet_2017/ --reduction 8 --batch_size 150
