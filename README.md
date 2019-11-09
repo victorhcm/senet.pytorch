@@ -59,17 +59,26 @@ hub_model = torch.hub.load(
 python cifar.py [--baseline]
 ```
 
-|                  | ResNet20       | SE-ResNet20 (reduction 4 or 8)    |
+|                  | ResNet20       | SE-ResNet20 (reduction 4 or 8) |
 |:-------------    | :------------- | :------------- |
 |max. test accuracy|  92%           | 93%            |
+
+My run:
+
+- ResNet: 0.922
+- SEResNet: 0.925
+- SE-Bilinear-ResNet: 0.926
+- SE-Bilinear-ResNet (re-run): 0.925
+- SE-Bilinear-ResNet (reduction 8): 0.924
+- SE-Bilinear-ResNet (reduction 4): 0.927
 
 ### SE-ResNet50/ImageNet
 
 *The initial learning rate and mini-batch size are different from the original version because of my computational resource* .
 
-|                  | ResNet         | SE-ResNet      |
-|:-------------    | :------------- | :------------- |
-|max. test accuracy(top1)|  76.15 %(*)             | 77.06% (**)          |
+|                  | ResNet         | SE-ResNet      | SE-Bilinear-ResNet (reduction 4)|
+|:-------------    | :------------- | :------------- | :----------------- |
+|max. test accuracy(top1)|  76.15 %(*)             | 77.06% (**)          | 76.48% |
 
 
 + (*): [ResNet-50 in torchvision](https://pytorch.org/docs/stable/torchvision/models.html)
@@ -82,6 +91,17 @@ python cifar.py [--baseline]
 senet = se_resnet50(num_classes=1000)
 senet.load_state_dict(torch.load("seresnet50-60a8950a85b2b.pkl"))
 ```
+
+### Visualizing with TensorBoard
+
+Head to `./results`, and run inside any folder:
+
+```bash
+tensorboard --logdir=.  --port=8006 --bind_all 
+```
+
+`--bind_all` was necessary on slurm. Tested with TensorBoard version 2.0.1.
+
 
 ## References
 
